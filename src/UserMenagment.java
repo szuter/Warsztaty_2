@@ -21,6 +21,8 @@ public class UserMenagment {
                 userId = getUserId();
                 if (hasUser(userId))
                     userDao.update(editUser(userDao.read(userId)), userId);
+                else
+                    System.out.println("Brak uzytkowniaka o tym id");
 
 
             } else if (command.equalsIgnoreCase("delete")) {
@@ -28,6 +30,8 @@ public class UserMenagment {
                 userId = getUserId();
                 if (hasUser(userId))
                     userDao.delete(userId);
+                else
+                    System.out.println("Brak uzytkowniaka o tym id");
             } else if (!command.equalsIgnoreCase("quit")) {
                 System.out.println("Błąd! Wprowadz ponownie.");
             }

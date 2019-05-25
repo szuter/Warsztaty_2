@@ -1,6 +1,6 @@
 import org.mindrot.jbcrypt.BCrypt;
 
-public class Group {
+public class User {
     private int id;
     private String userName;
     private String email;

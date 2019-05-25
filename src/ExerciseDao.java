@@ -10,7 +10,7 @@ public class ExerciseDao {
     private static final String READ_EXERCISE_QUERY =
             "SELECT * FROM exercise where id = ?";
     private static final String UPDATE_EXERCISE_QUERY =
-            "UPDATE exercise SET title = ?, description = ? where id = ?";
+            "UPDATE exercise SET title = ?, description = ?,id = ? where id = ?";
     private static final String DELETE_EXERCISE_QUERY =
             "DELETE FROM exercise WHERE id = ?";
     private static final String FIND_ALL_EXERCISE_QUERY =
@@ -53,12 +53,13 @@ public class ExerciseDao {
         return null;
     }
 
-    public void update(Exercise exercise) {
+    public void update(Exercise exercise, int exerciseId) {
         try (Connection conn = ConnectionUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(UPDATE_EXERCISE_QUERY);
             statement.setString(1, exercise.getTitle());
             statement.setString(2, exercise.getDescription());
             statement.setInt(3, exercise.getId());
+            statement.setInt(4,exerciseId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
